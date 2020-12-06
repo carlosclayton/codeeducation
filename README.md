@@ -6,8 +6,22 @@
 git clone git@github.com:carlosclayton/codeeducation.git
 ```
 
-## Running Container
+## Building image
+
 ```
-sudo docker run -it --rm --name go-myapp3 v1u5oluc035/codeeducation:1.0
+sudo docker build -t v1u5oluc035/codeeducation:1.0 .
+```
+
+
+## Showing size of images
+
+```
+sudo docker images | grep codeeducation.
+```
+
+
+## Running container
+```
+sudo docker run -it --rm --name go-myapp v1u5oluc035/codeeducation:1.0
 ```
 

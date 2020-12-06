@@ -1,7 +1,20 @@
-FROM golang:alpine
+FROM golang:alpine AS golang
 
-# Copy the code into the container
+USER root
+
+# Copiando arquivos
 COPY . .
 
-# Command to run when starting the container
- CMD ["go", "run", "src/main/main.go"]
+
+# Compilando projeto
+RUN go build src/main/main.go 
+
+
+FROM alpine:3.7
+
+# Copiando arquivo binario para raiz
+COPY --from=golang go/main .
+
+# Executando o arquivo binario
+ENTRYPOINT ["./main"]
+
